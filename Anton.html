@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Table Layout</title>
+    <style>
+		@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
+        .slogan-box {
+            background-color: black;
+            color: white;
+            font-family: 'Pacifico', cursive;
+            font-size: 32px;
+            text-align: center;
+            padding: 50px;
+            border-radius: 5px;
+			width: 350px;
+        }
+		
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+			background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+        }
+		a {
+            color: white;
+            font-weight: bold;
+            font-family: 'Cursive', 'Script';
+            text-decoration: underline;
+        }
+        table {
+            width:  100%;
+            height: 100%;
+            border-collapse: collapse;
+        }
+		.div.mainbodytext {
+			background-color: #fff;
+			border: 1px solid #ccc;
+			margin: 5px 0;
+			color: black;
+		}
+        td {
+            border: 1px solid #000;
+            text-align: center;
+        }
+
+        .fixed-box {
+            width: 150px;
+            height: 150px;
+			text-align: center;
+        }
+
+        .col-span-full {
+            width: calc(100% - 150px - 300px);
+			text-align: left;
+			padding: 10px;
+			background-color: #fff;
+			border: 1px solid #ccc;
+			margin: 5px 0;
+			color: black;
+        }
+
+        .fixed-300px {
+            width: 350px;
+			text-align: center;
+        }
+
+        .height-page {
+            height: 100%;
+        }
+
+        .fixed-150px {
+            height: 150px;
+        }
+
+        .fixed-300px-height {
+            height: 300px;
+        }
+
+        .distributed {
+            width: 25%;
+        }
+		.phone-box {
+            background-color: yellow;
+            color: black;
+            font-size: 16px;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 5px;
+			width: 250px;
+        }
+        .phone-box .phone-icon {
+            font-size: 16px;
+            margin-right: 10px;
+        }
+		.footer-text {
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+            color: white;
+            text-align: center;
+            margin-top: 20px;
+        }
+		.button-list {
+            list-style-type: none;
+            padding: 7px;
+            width: 135px;
+        }
+
+        .button-list li {
+            background-color: #4a4a4a;
+            color: white;
+            padding: 10px;
+            margin-bottom: 5px;
+            text-align: left;
+            position: relative;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .button-list li:hover {
+            background-color: #6a6a6a;
+        }
+
+        .button-list li::after {
+            content: '➔'; /* Right arrow */
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+		.container {
+    width: 90%;
+    margin: 0 auto;
+}
+
+.toggle-section {
+    display: none; /* Initially hide sections */
+	text-align: left;
+    padding: 10px;
+	width: 100%;
+    background-color: #fff;
+    border: 0px solid #ccc;
+    margin: 5px 0;
+	color: black;
+            font-family: Arial, sans-serif;
+            font-size: 12px;
+}
+    </style>
+</head>
+<body>
+    <table>
+        <!-- 1st Row: 150px height and cells distributed evenly -->
+        <tr class="fixed-150px">
+            <td class="distributed"><img src="https://via.placeholder.com/150" alt="Anton Gray LLC" width="150" height="150"></td>
+            <td class="distributed"><div class="slogan-box">
+    “Fixing Problems, One Job at a Time!”
+</div></td>
+            <td class="distributed"><div class="phone-box">
+    <span class="phone-icon">📞</span> Main: 929-386-3590
+</div></td>
+            <td class="distributed">
+			</td>
+        </tr>
+		<!-- 3rd: Height of the page, first two columns fixed at 300px, rest spans the page -->
+        <tr>
+            <td colspan="2" rowspan="1" class="height-page" style="width: 300px;"></td>
+            <td colspan="3"></td>
+        </tr>
+		<!-- 2nd Row: Static 150x150 box, three columns spanning the width, and a 300px cell -->
+        <tr>
+            <td class="fixed-box" valign="top"><ul class="button-list">
+    <ul class="button-list">
+    <li onclick="showImage('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh8penBmf_ppEqHk9K4mCYlgcOYduJeNuiX3H1qbqypCLPx7Hp_lm7CYShTKUPYf4fERtgEb0FGW9YJgXe9MnZ7RHtiVx0rjGKvYZe9D50EAgZJopLpGwnIxE1Br79EWt-QqS7NiSDg1nNYOS3YHBtIt6wA1O25WVqM6ratIGExrVd4ocAWho66PWwkL4Xq/s1600/Link1_electrical.png'); toggleSection('sectionElectrical')">Electrical</li>
+    <li onclick="showImage('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQPmHGq3n00Ek6yTxgLlT2kzmxbwPOD1TVwS1fdIwBr7XW884G9Y92Mf8dtbarW3J0DggjYU-JH2WfCXJ_DzFEl6v0hZGRoCbn2Tu4D8OlHdeDN-WKpSSlZrOmokREiv59ncPDervRwJ6m3xYk7XU_JOJUuP6NpRSO48UEH3ApdB7Sqv2-iOzXFH7VZf3T/s1600/Link2_floortile.png');toggleSection('sectionFloorTile')">Floor and Tile</li>
+    <li onclick="showImage('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiGpfMQeYUm679elxZ0li1vuiy3REkCrHD_prCwoC2zL-sz0M4g2rElNRCNrEjCjev4BigtX0R3bw68wy3Zs0Rz0RNm0gKzUBCG-JmAaZd67bw5txlhO7TG4xzvxTb8Z8-jA3s_IYewKR3KgdbsktnS-ckG4v8mbofe86lWv0TW9uz9x4P3g7JayS9aIv5e/s1600/Link3_General.png'); toggleSection('sectionGeneralInterior')">General Interior</li>
+    <li onclick="showImage('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjEywZtvX88sLf9smc0kHwXAatfuZOCkDXNG6CUrBPitMyNpZKaUYFv2NUj-ocF8p5geIZxc-JZzgj0kvNVurKDD9JFFAwo5Z341IYiAAg4GgK1w4Sq8EXJDMqWzZATFKPZdWz7SeazPFB00pc9YA_5epeKMCRkB7RsBaSTIvkQF5vi5AUvBPRkpldYoyDR/s1600/Link4_painting.png'); toggleSection('sectionPainting')">Painting</li>
+    <li onclick="showImage('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgJ51cW5Ym6EKu6sxSHwqKyXAZZ97XmSAqD0xQNxamKADN5oe1L76nZX6iatq7zUA34q9lNbdWSmAyIzLpKvII98qjnAR5Gvm62gtJ7O6_VkJWK8ogAyzVUIkN80MllJ62ldGgZGVoBYzc9ozmrEU9ymzmiMEdP2karT2Y0Mu85xCKSZ6_0CGwlhvy_B80V/s300/Link5_plumbing.png'); toggleSection('sectionPlumbing')">Plumbing</li>
+    <li onclick="showImage('https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgn3MXiNPTk61YcaCgersL7K-PX_Dpb1dp64oMk6mX3OaLi6j_4Y1hRmH2moU7-2ELp616oeOAn0LuBD_ZtofL9YqRCTAjAk9b8NncC0VFxxyhqXCVnoEJaJ1xxbB8yvRpL-ZG7A4fb7wAVXw562siOO4w2UwqjVrNVq33rcV7uWFaunbZ3WPnnW38D2OYQ/s300/Link6_powerwashing.png'); toggleSection('sectionPressureWashing')">Pressure Washing</li>
+</ul>
+</ul><br /><br /><p><b>Antonio Gray</b><br />Email: infograyllc@gmail.com</p></td>
+            
+            <td class="col-span-full" valign="top">
+			
+			<div class="container">
+	<div id="Sitedefault" class="toggle-section">
+	<h1 style="font-family: 'Pacifico', cursive;">Our Promise:</h1>
+	<p>We take great satisfaction in providing a broad range of construction services that are painstakingly customized to match your particular requirements and tastes. Whether you want to build a bespoke addition to your home, completely remodel your space, or design the ideal outdoor living area, our staff is committed to offering individualized solutions. We are dedicated to providing excellence that represents your own style and needs since we recognize that every project is as unique as our clients. Your vision for your house becomes our blueprint for creation when you use our all-inclusive services.</p>
+    </div>
+    <div id="sectionElectrical" class="toggle-section">
+	<h1 style="font-family: 'Pacifico', cursive;">Electrical:</h1>
+        <p>Electrical work is a very delicate process, and when your home is concerned, it’s crucial that you choose the right people for the job. BAd electrical can impact home retail value, damage expensive equipment, and pose a fire hazard. Whether you need a brand new electrical installation or just some minor repairs, you can trust us to get the job done right, safetly, the first time, quickly and up to code.</p>
+    </div>
+    <div id="sectionFloorTile" class="toggle-section">
+	<h1 style="font-family: 'Pacifico', cursive;">Floor and Tile:</h1>
+        <p> A well constructed floor is essential to a tidy home appearance and can add elegance to an otherwise drab room. When it comes to flooring and remodeling, we can work with you to finish out complex projects, help with repairs, or take care of everything for you from start to finish! </p>
+    </div>
+    <div id="sectionGeneralInterior" class="toggle-section">
+	<h1 style="font-family: 'Pacifico', cursive;">General Interior:</h1>
+        <p>This is the content of the General Interior section. It contains important information regarding general interior services.</p>
+    </div>
+    <div id="sectionPainting" class="toggle-section">
+	<h1 style="font-family: 'Pacifico', cursive;">Painting and Staining:</h1>
+        <p>This is the content of the Painting section. It contains important information regarding painting services.</p>
+    </div>
+    <div id="sectionPlumbing" class="toggle-section">
+	<h1 style="font-family: 'Pacifico', cursive;">Plumbing:</h1>
+        <p>This is the content of the Plumbing section. It contains important information regarding plumbing services.</p>
+    </div>
+    <div id="sectionPressureWashing" class="toggle-section">
+	    <h1 style="font-family: 'Pacifico', cursive;">Pressure Washing:</h1>
+        <p>This is the content of the Pressure Washing section. It contains important information regarding pressure washing services.</p>
+    </div>
+</div>
+
+<script src="script.js"></script>
+
+			</td>
+			<td colspan="3" class="fixed-300px" valign="top">
+<div id="image-container">
+    <img id="displayed-image" src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgHoJ1USTM2eLiwtRKJeYIElAVWBN6eRtRrnx9oQt7UJ1ey3OF69XyFJUe6ksEy0r7pKpT38oTYxcmkrY9TzoVZeeHzKzlKhzNF_aCExs9RgNSMLXO4QWwn9cVT9X_fa_zheZJYO2bvIu5CMVD_vx0zQgocU1TulOwOl5I4RmsZAJ3pDO_Gz2e79LW0QpyV/s1600/Link0_splash.png" alt="Service Image">
+</div>
+</td>
+        </tr>
+        <!-- Fourth Row: 300px height spanning the width of the page -->
+        <tr class="fixed-300px-height">
+            <td colspan="5"><div class="footer-text">
+    <a href="https://socratesfootfeed.blogspot.com/" target="_blank">Template by SF Business Technology Library</a>
+</div></td>
+        </tr>
+    </table>
+	
+	<script>
+    function showImage(imageUrl) {
+        document.getElementById('displayed-image').src = imageUrl;
+    }
+	
+	function toggleSection(sectionId) {
+    // Get all sections
+    const sections = document.querySelectorAll('.toggle-section');
+    
+    // Hide all sections
+    sections.forEach(section => {
+        section.style.display = "none";
+    });
+    
+    // Show the selected section
+    const selectedSection = document.getElementById(sectionId);
+    selectedSection.style.display = "block";
+}
+
+// Show all sections by default
+document.querySelectorAll('.toggle-section').forEach(section => {
+    section.style.display = "block"; // Make all sections visible
+});
+	</script>
+</body>
+</html>
